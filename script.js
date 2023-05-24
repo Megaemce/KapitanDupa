@@ -17,9 +17,9 @@ let countdownTimeout;
 let isSpacebarPressed = false;
 
 function startCountdown() {
-    let timeLeft = 10;
+    let timeLeft = 9;
     countdownTimeout = setInterval(function () {
-        if (timeLeft > 0) {
+        if (timeLeft >= 0) {
             timerValue.textContent = timeLeft + "sek";
             timeLeft--;
         } else {
@@ -104,8 +104,8 @@ function handleKeyUp() {
     }
     isSpacebarPressed = false;
     clearTimeout(keyPressTimeout);
-    spacebarCount++;
-    scoreValue.textContent = spacebarCount * 10;
+    spacebarCount += 10;
+    scoreValue.textContent = spacebarCount;
 }
 
 function handleInputKeyPress(event) {
