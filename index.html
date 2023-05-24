@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </head>
+    <body>
+        <div id="container">
+            <div id="game">
+                <div id="elements-container">
+                    <div id="element1">
+                        <img
+                            id="playerImg"
+                            src="deactive.svg"
+                            alt="Main image"
+                        />
+                    </div>
+                </div>
+                <div id="bottom-section">
+                    <div id="score">
+                        score
+                        <span id="scoreValue">0</span>
+                    </div>
+                    <div id="hit">
+                        hit
+                        <img id="hitImg" src="hit.svg" />
+                    </div>
+                    <div id="timer">
+                        shot
+                        <span id="timerValue">5 sek</span>
+                    </div>
+                </div>
+                <div id="message">
+                    <div id="gameOver">
+                        <img src="gameover.svg" alt="Game over" />
+                    </div>
+                    <input
+                        type="text"
+                        id="nameInput"
+                        placeholder="Enter your name"
+                    />
+                </div>
+            </div>
+            <div id="scoreboard"></div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

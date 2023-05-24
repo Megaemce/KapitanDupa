@@ -1,0 +1,22 @@
+<svg width="32.014mm" height="47.89mm" version="1.1" viewBox="0 0 32.014 47.89" xmlns="http://www.w3.org/2000/svg">
+ <g fill="#8ae234" stroke="#000" stroke-linecap="square" stroke-width=".26458">
+  <rect x="5.4233" y="10.715" width="5.2917" height="5.2916" ry="0"/>
+  <rect x="10.715" y="16.007" width="5.2917" height="5.2916" ry="0"/>
+  <rect x=".13229" y="5.4239" width="5.2917" height="5.2916" ry="0"/>
+  <rect x=".13229" y="16.007" width="5.2917" height="5.2916" ry="0"/>
+  <rect x="5.4233" y="16.007" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-10.715" y="-5.4239" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-21.298" y="-21.298" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-16.007" y="-26.59" width="5.2917" height="5.2916" ry="0"/>
+  <rect x="5.4233" y="21.298" width="5.2917" height="5.2916" ry="0"/>
+  <rect x=".13229" y="21.298" width="5.2917" height="5.2916" ry="0"/>
+  <rect x="5.4233" y="26.59" width="5.2917" height="5.2916" ry="0"/>
+  <rect x=".13229" y="26.59" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-16.007" y="-31.882" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-10.716" y="-37.173" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-10.716" y="-42.465" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-10.717" y="-47.757" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-16.009" y="-47.757" width="5.2917" height="5.2916" ry="0"/>
+  <rect transform="scale(-1)" x="-16.007" y="-10.715" width="5.2917" height="5.2916" ry="0"/>
+ </g>
+</svg>
