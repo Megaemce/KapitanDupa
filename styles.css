@@ -51,9 +51,9 @@ body {
 #score {
     font-size: 20px;
     margin-bottom: 10px;
-    padding: 0 10px 0 10px;
-    margin: 0 10px 0 10px;
-    border-radius: 15px;
+    padding: 0 10px;
+    margin: 0 10px;
+    border-radius: 10%;
     border: 2px solid #8ae234;
     display: flex;
     flex-direction: column;
@@ -68,18 +68,18 @@ body {
     justify-content: center;
     font-size: 20px;
     margin-bottom: 10px;
-    margin: 0 10px 0 10px;
-    border-radius: 15px;
-    padding: 0 10px 0 10px;
+    margin: 0 10px;
+    border-radius: 10%;
+    padding: 0 10px;
     border: 2px solid #8ae234;
 }
 
 #hit {
     margin-bottom: 10px;
-    border-radius: 15px;
-    margin: 0 10px 0 10px;
-
-    padding: 0 10px 0 10px;
+    border-radius: 10%;
+    font-size: 20px;
+    margin: 0 10px;
+    padding: 0 10px;
     border: 2px solid #8ae234;
     display: flex;
     flex-direction: row;
@@ -88,7 +88,7 @@ body {
 
 #hitImg {
     height: 35px;
-    padding: 0 10px 0 10px;
+    padding: 0 10px;
 }
 
 #message {
@@ -106,12 +106,12 @@ body {
 }
 
 #nameInput {
-    display: none; /* Hide the input initially */
+    display: none;
     margin-top: 10px;
 }
 
 #scoreboard {
-    display: flex; /* Hide the scoreboard initially */
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     margin-top: 20px;
