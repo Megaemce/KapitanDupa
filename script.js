@@ -1,3 +1,5 @@
+const start = document.getElementById("start");
+const inputDiv = document.getElementById("input");
 const gameOver = document.getElementById("gameOver");
 const element1 = document.getElementById("element1");
 const elements = document.getElementById("elements-container");
@@ -6,6 +8,9 @@ const nameInput = document.getElementById("nameInput");
 const opponentImg = document.getElementById("opponentImg");
 const scoreValue = document.getElementById("scoreValue");
 const timerValue = document.getElementById("timerValue");
+const finalScoreValue = document.getElementById("finalScoreValue");
+const exclamationMark = document.getElementById("!");
+const finalScoreMessage = document.getElementById("finalScore");
 const scoreboardDisplay = document.getElementById("scoreboard");
 
 let gameActive = true;
@@ -32,22 +37,25 @@ function startCountdown() {
 function endGame() {
     gameActive = false;
     gameOver.style.display = "block";
-    elements.style.display = "none";
+    gameOver.style.animation = "blink 0.3s 10";
 
     setTimeout(() => {
         gameOver.style.display = "none";
-        setTimeout(() => {
-            gameOver.style.display = "block";
-            setTimeout(() => {
-                gameOver.style.display = "none";
-                setTimeout(() => {
-                    nameInput.style.display = "block";
-                    nameInput.focus();
-                }, 500);
-            }, 1000);
-        }, 500);
-    }, 1000);
 
+        finalScoreValue.textContent = spacebarCount;
+        finalScoreMessage.style.display = "flex";
+        exclamationMark.style.animation = "blink 0.6s 5";
+        finalScoreValue.style.animation = "blink 0.55s 5";
+
+        setTimeout(() => {
+            finalScoreMessage.style.display = "none";
+            inputDiv.style.display = "flex";
+            nameInput.style.display = "block";
+            nameInput.focus();
+        }, 3100);
+    }, 3100);
+
+    elements.style.display = "none";
     clearInterval(countdownTimeout);
 }
 
@@ -81,9 +89,11 @@ function saveScore() {
         const savedScores = JSON.parse(localStorage.getItem("scores")) || [];
         savedScores.push(score);
         localStorage.setItem("scores", JSON.stringify(savedScores));
+        // clean after all
         nameInput.value = "";
-        nameInput.style.display = "none";
+        inputDiv.style.display = "none";
         scoreboardDisplay.innerHTML = "";
+
         showScoreboard();
     }
 }
@@ -105,31 +115,43 @@ function handleKeyUp() {
     isSpacebarPressed = false;
     clearTimeout(keyPressTimeout);
     spacebarCount += 10;
+
+    const hitsNo = Math.floor(spacebarCount / 100);
+
+    if (hitsNo > 0) {
+        document
+            .getElementById(`hit${hitsNo}`)
+            .setAttribute("fill", "#a40000ff");
+    }
     scoreValue.textContent = spacebarCount;
 }
 
-function handleInputKeyPress(event) {
-    if (event.keyCode === 13) {
-        saveScore();
-    }
-}
+start.onclick = () => {
+    start.style.display = "none";
+    elements.style.display = "flex";
+    startCountdown();
+};
 
-document.addEventListener("keydown", function (event) {
+document.onkeydown = (event) => {
     if (event.code === "Space" && gameActive) {
+        event.preventDefault();
         handleKeyDown();
     }
-});
+};
 
-document.addEventListener("keyup", function (event) {
+document.onkeyup = (event) => {
     if (event.code === "Space" && gameActive) {
         clearTimeout(keyPressTimeout);
         if (isSpacebarPressed) {
             handleKeyUp();
         }
         isSpacebarHeld = false;
+        event.preventDefault();
     }
-});
+};
 
-nameInput.addEventListener("keypress", handleInputKeyPress);
-
-startCountdown();
+nameInput.onkeydown = (event) => {
+    if (event.keyCode === 13) {
+        saveScore();
+    }
+};

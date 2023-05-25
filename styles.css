@@ -2,7 +2,8 @@ body {
     text-transform: uppercase;
     background-color: rgb(32, 44, 36);
     color: #8ae234;
-    font-family: "Courier New", Courier, monospace;
+    /* color: #a40000ff */
+    font-family: sans-serif;
     font-weight: bold;
 }
 
@@ -18,13 +19,12 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
 }
 
 #elements-container {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 20px;
@@ -61,6 +61,23 @@ body {
     justify-content: center;
 }
 
+#start {
+    font-size: 120px;
+}
+
+#finalScore {
+    font-size: 30px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#finalScore h1 {
+    font-size: 120px;
+    margin-bottom: -20px;
+}
+
 #timer {
     display: flex;
     flex-direction: column;
@@ -88,7 +105,6 @@ body {
 
 #hitImg {
     height: 35px;
-    padding: 0 10px;
 }
 
 #message {
@@ -100,9 +116,49 @@ body {
     transform: translate(-50%, -50%);
 }
 
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 #gameOver {
     display: none;
     background-image: "./gameover.svg";
+}
+
+#input {
+    font-size: 50px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    border: none;
+    background: transparent;
+    font-size: 50px;
+    color: #8ae234;
+    text-align: center;
+    caret-color: transparent;
+}
+
+input:focus {
+    outline: none;
+    text-transform: uppercase;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #8ae234;
+    opacity: 1; /* Firefox */
+    text-align: center;
+    /* font-family: "Courier New", Courier, monospace; */
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 #nameInput {
