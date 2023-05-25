@@ -57,6 +57,9 @@ function endGame() {
 
     elements.style.display = "none";
     clearInterval(countdownTimeout);
+
+    document.onkeyup = undefined;
+    document.onkeydown = undefined;
 }
 
 function showScoreboard() {
@@ -169,9 +172,10 @@ document.ontouchstart = () => {
     elements.style.display = "flex";
     startCountdown();
 
-    document.ontouchstart = () => {
+    document.ontouchstart = (event) => {
         if (gameActive) {
             handleKeyDown();
+            event.preventDefault();
         }
     };
 };
