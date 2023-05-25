@@ -126,17 +126,24 @@ function handleKeyUp() {
     scoreValue.textContent = spacebarCount;
 }
 
+// global hook for the start
+document.onkeydown = () => {
+    start.style.display = "none";
+    elements.style.display = "flex";
+    startCountdown();
+
+    document.onkeydown = (event) => {
+        if (event.code === "Space" && gameActive) {
+            event.preventDefault();
+            handleKeyDown();
+        }
+    };
+};
+
 start.onclick = () => {
     start.style.display = "none";
     elements.style.display = "flex";
     startCountdown();
-};
-
-document.onkeydown = (event) => {
-    if (event.code === "Space" && gameActive) {
-        event.preventDefault();
-        handleKeyDown();
-    }
 };
 
 document.onkeyup = (event) => {
@@ -153,5 +160,28 @@ document.onkeyup = (event) => {
 nameInput.onkeydown = (event) => {
     if (event.keyCode === 13) {
         saveScore();
+    }
+};
+
+// touch events
+document.ontouchstart = () => {
+    start.style.display = "none";
+    elements.style.display = "flex";
+    startCountdown();
+
+    document.ontouchstart = () => {
+        if (gameActive) {
+            handleKeyDown();
+        }
+    };
+};
+
+document.ontouchend = () => {
+    if (gameActive) {
+        clearTimeout(keyPressTimeout);
+        if (isSpacebarPressed) {
+            handleKeyUp();
+        }
+        isSpacebarHeld = false;
     }
 };
