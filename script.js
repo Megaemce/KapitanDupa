@@ -22,7 +22,7 @@ let countdownTimeout;
 let isSpacebarPressed = false;
 
 function startCountdown() {
-    let timeLeft = 1;
+    let timeLeft = 9;
     countdownTimeout = setInterval(function () {
         if (timeLeft >= 0) {
             timerValue.textContent = timeLeft + "sek";
