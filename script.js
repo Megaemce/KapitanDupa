@@ -172,12 +172,13 @@ document.ontouchstart = () => {
     elements.style.display = "flex";
     startCountdown();
 
-    document.ontouchstart = (event) => {
+    (document.ontouchstart = (event) => {
         if (gameActive) {
             handleKeyDown();
             event.preventDefault();
         }
-    };
+    }),
+        { passive: false };
 };
 
 document.ontouchend = () => {
