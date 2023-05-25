@@ -173,12 +173,15 @@ document.ontouchstart = () => {
     startCountdown();
 
     (document.ontouchstart = (event) => {
+        if (event.touches.length > 1) {
+            event.prevententDefault();
+            event.stopImmediatePropagation();
+        }
         if (gameActive) {
             handleKeyDown();
-            event.preventDefault();
         }
     }),
-        { passive: false };
+        true;
 };
 
 document.ontouchend = () => {
