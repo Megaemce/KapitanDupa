@@ -22,7 +22,7 @@ let countdownTimeout;
 let isSpacebarPressed = false;
 
 function startCountdown() {
-    let timeLeft = 9;
+    let timeLeft = 3;
     countdownTimeout = setInterval(function () {
         if (timeLeft >= 0) {
             timerValue.textContent = timeLeft + "sek";
@@ -38,6 +38,11 @@ function endGame() {
     gameActive = false;
     gameOver.style.display = "block";
     gameOver.style.animation = "blink 0.3s 10";
+
+    clearInterval(countdownTimeout);
+
+    document.onkeyup = undefined;
+    document.onkeydown = undefined;
 
     setTimeout(() => {
         gameOver.style.display = "none";
@@ -56,10 +61,6 @@ function endGame() {
     }, 3100);
 
     elements.style.display = "none";
-    clearInterval(countdownTimeout);
-
-    document.onkeyup = undefined;
-    document.onkeydown = undefined;
 }
 
 function showScoreboard() {
@@ -150,8 +151,8 @@ start.onclick = () => {
 };
 
 document.onkeyup = (event) => {
+    keyPressTimeout && clearTimeout(keyPressTimeout);
     if (event.code === "Space" && gameActive) {
-        clearTimeout(keyPressTimeout);
         if (isSpacebarPressed) {
             handleKeyUp();
         }
@@ -172,21 +173,16 @@ document.ontouchstart = () => {
     elements.style.display = "flex";
     startCountdown();
 
-    (document.ontouchstart = (event) => {
-        if (event.touches.length > 1) {
-            event.prevententDefault();
-            event.stopImmediatePropagation();
-        }
+    document.ontouchstart = () => {
         if (gameActive) {
             handleKeyDown();
         }
-    }),
-        true;
+    };
 };
 
 document.ontouchend = () => {
+    keyPressTimeout && clearTimeout(keyPressTimeout);
     if (gameActive) {
-        clearTimeout(keyPressTimeout);
         if (isSpacebarPressed) {
             handleKeyUp();
         }
