@@ -13,14 +13,14 @@ const finalScoreValue = document.getElementById("finalScoreValue");
 const exclamationMark = document.getElementById("!");
 const finalScoreMessage = document.getElementById("finalScore");
 const scoreboardDisplay = document.getElementById("scoreboard");
-const nicSound = new Audio("nicNieCzuje.mp3");
-const startSound = new Audio("rundaPierwsza.mp3");
-const actionSound = new Audio("dlaczegoNieRypiecie.mp3");
-const koncowkaSound = new Audio("koncowka.mp3");
-const gameOverSound = new Audio("gameOver.mp3");
-const wpiszLoginSound = new Audio("wpiszLogin.mp3");
-const miernyWynikSound = new Audio("miernyWynik.mp3");
-const najwyzszyWynikSound = new Audio("najwyzszyWynik.mp3");
+const nicSound = new Audio("sounds/nicNieCzuje.mp3");
+const startSound = new Audio("sounds/rundaPierwsza.mp3");
+const actionSound = new Audio("sounds/dlaczegoNieRypiecie.mp3");
+const koncowkaSound = new Audio("sounds/koncowka.mp3");
+const gameOverSound = new Audio("sounds/gameOver.mp3");
+const wpiszLoginSound = new Audio("sounds/wpiszLogin.mp3");
+const miernyWynikSound = new Audio("sounds/miernyWynik.mp3");
+const najwyzszyWynikSound = new Audio("sounds/najwyzszyWynik.mp3");
 // ** VARIABLES ** //
 let time = 9;
 let gameActive = false;
@@ -133,7 +133,7 @@ function saveScore() {
 // hanle when user finish pushing the space or finish the touch
 function handleActionFinish() {
     if (isSpacebarPressed) {
-        playerImg.setAttribute("src", "deactive.svg");
+        playerImg.setAttribute("src", "images/deactive.svg");
     }
     isSpacebarPressed = false;
     spacebarCount += 10;
@@ -162,7 +162,7 @@ startButton.onclick = () => {
             if (event.code === "Space") {
                 event.preventDefault();
                 if (gameActive && !isSpacebarPressed) {
-                    playerImg.setAttribute("src", "active.svg");
+                    playerImg.setAttribute("src", "images/active.svg");
                     isSpacebarPressed = true;
                 }
             }
@@ -170,7 +170,7 @@ startButton.onclick = () => {
 
         document.ontouchstart = () => {
             if (gameActive && !isSpacebarPressed) {
-                playerImg.setAttribute("src", "active.svg");
+                playerImg.setAttribute("src", "images/active.svg");
                 isSpacebarPressed = true;
             }
         };
