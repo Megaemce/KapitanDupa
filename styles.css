@@ -23,7 +23,7 @@ body {
     width: 100%; */
 }
 
-#elements-container {
+#figures {
     display: none;
     justify-content: center;
     align-items: flex-end;
@@ -34,7 +34,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#element1 {
+#playerFigure {
     margin-right: -20px;
 }
 
