@@ -3,6 +3,6 @@ Galaktyka Kurvix, zamieszkana przez kosmitów, została zaatakowana przez wielki
 <div align="center">
     <a href="https://megaemce.github.io/KapitanDupa/">
         <b> Naprzód żołnierze!</b><br>
-        <img src="https://github.com/Megaemce/KapitanDupa/blob/master/deactive.svg" height="200px">
+        <img src="https://github.com/Megaemce/KapitanDupa/blob/master/images/deactive.svg" height="200px">
     </a>
 </div>
