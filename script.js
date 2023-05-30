@@ -79,7 +79,13 @@ function startCountdown() {
         } else {
             clearInterval(countdownInterval);
             truTuTuSound.pause();
+            jakBabeSound.onended = undefined;
             truTuTuSound.onended = undefined;
+            dlaczegoSound.onended = undefined;
+            noCoJestSound.onended = undefined;
+            zCalychSilSound.onended = undefined;
+            nicNieCzujeSound.onended = undefined;
+
             endGame();
         }
     }, 1000);
