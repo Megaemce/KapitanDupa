@@ -1,6 +1,7 @@
 // ** CONSTANS ** //
 const topOne = getBestScores(1)[0] ? getBestScores(1)[0].value : 0;
 const figures = document.getElementById("figures");
+const restart = document.getElementById("restart");
 const inputDiv = document.getElementById("input");
 const gameOver = document.getElementById("gameOver");
 const playerImg = document.getElementById("playerImg");
@@ -13,13 +14,19 @@ const finalScoreValue = document.getElementById("finalScoreValue");
 const exclamationMark = document.getElementById("!");
 const finalScoreMessage = document.getElementById("finalScore");
 const scoreboardDisplay = document.getElementById("scoreboard");
-const nicSound = new Audio("sounds/nicNieCzuje.mp3");
-const startSound = new Audio("sounds/rundaPierwsza.mp3");
-const actionSound = new Audio("sounds/dlaczegoNieRypiecie.mp3");
-const koncowkaSound = new Audio("sounds/koncowka.mp3");
+// ** SOUNDS ** //
+const jakBabeSound = new Audio("sounds/jakBabe.mp3");
+const truTuTuSound = new Audio("sounds/truTuTu.mp3");
+const noCoJestSound = new Audio("sounds/noCoJest.mp3");
+const dlaczegoSound = new Audio("sounds/dlaczego.mp3");
 const gameOverSound = new Audio("sounds/gameOver.mp3");
+const zCalychSilSound = new Audio("sounds/zCalychSil.mp3");
 const wpiszLoginSound = new Audio("sounds/wpiszLogin.mp3");
+const nicNieCzujeSound = new Audio("sounds/nicNieCzuje.mp3");
+const kapitanDupaSound = new Audio("sounds/kapitanDupa.mp3");
 const miernyWynikSound = new Audio("sounds/miernyWynik.mp3");
+const sprobujJeszczeRaz = new Audio("sounds/sprobujJeszczeRaz.mp3");
+const rundaPierwszaSound = new Audio("sounds/rundaPierwsza.mp3");
 const najwyzszyWynikSound = new Audio("sounds/najwyzszyWynik.mp3");
 // ** VARIABLES ** //
 let time = 9;
@@ -30,21 +37,49 @@ let isPressed = false;
 // ** FUNCTIONS ** //
 // start the action sound, clock and show the seconds in the timer
 function startCountdown() {
-    actionSound.play();
+    truTuTuSound.play();
+    // sounds loop
+    truTuTuSound.onended = () => {
+        const randomNum = Math.floor(Math.random() * 6);
+
+        if (randomNum === 0) {
+            nicNieCzujeSound.play();
+            nicNieCzujeSound.onended = () => {
+                truTuTuSound.play();
+            };
+        } else if (randomNum === 1) {
+            dlaczegoSound.play();
+            dlaczegoSound.onended = () => {
+                truTuTuSound.play();
+            };
+        } else if (randomNum === 2) {
+            jakBabeSound.play();
+            jakBabeSound.onended = () => {
+                truTuTuSound.play();
+            };
+        } else if (randomNum === 3) {
+            noCoJestSound.play();
+            noCoJestSound.onended = () => {
+                truTuTuSound.play();
+            };
+        } else if (randomNum === 4) {
+            zCalychSilSound.play();
+            zCalychSilSound.onended = () => {
+                truTuTuSound.play();
+            };
+        } else {
+            truTuTuSound.play();
+        }
+    };
+
     const countdownInterval = setInterval(function () {
         if (time >= 0) {
             timerValue.textContent = time + "sek";
             time--;
-            // hacky sound loop
-            actionSound.onended = () => {
-                nicSound.play();
-                nicSound.onended = () => {
-                    actionSound.play();
-                };
-            };
         } else {
-            actionSound.pause();
             clearInterval(countdownInterval);
+            truTuTuSound.pause();
+            truTuTuSound.onended = undefined;
             endGame();
         }
     }, 1000);
@@ -65,7 +100,12 @@ function endGame() {
         if (count < topOne) {
             miernyWynikSound.play();
             miernyWynikSound.onended = () => {
-                koncowkaSound.play();
+                kapitanDupaSound.play();
+                kapitanDupaSound.onended = () => {
+                    sprobujJeszczeRaz.play();
+                    gameOver.style.display = "none";
+                    restart.style.display = "block";
+                };
             };
         } else {
             gameOver.style.display = "none";
@@ -110,7 +150,12 @@ function showScoreboard() {
             "</p>";
     });
     scoreboardDisplay.style.display = "flex";
-    koncowkaSound.play();
+    kapitanDupaSound.play();
+    kapitanDupaSound.onended = () => {
+        scoreboardDisplay.style.display = "none";
+        sprobujJeszczeRaz.play();
+        restart.style.display = "block";
+    };
 }
 
 function saveScore() {
@@ -149,10 +194,10 @@ function handleActionFinish() {
 }
 
 startButton.onclick = () => {
-    startSound.play();
-    startButton.style.animation = "blink 0.9s 10";
+    rundaPierwszaSound.play();
+    startButton.style.animation = "blink 0.8s 10";
     // start the game when the sound has ended
-    startSound.onended = () => {
+    rundaPierwszaSound.onended = () => {
         startButton.style.display = "none";
         figures.style.display = "flex";
 
@@ -188,4 +233,21 @@ startButton.onclick = () => {
 // no save button so just handle enter as it
 nameInput.onkeydown = (event) => {
     event.keyCode === 13 && saveScore();
+};
+
+// restart the game
+restart.onclick = () => {
+    time = 9;
+    count = 0;
+    timerValue.textContent = "9sek";
+    scoreValue.textContent = "0";
+    restart.style.display = "none";
+
+    for (let i = 1; i <= 9; i++) {
+        document.getElementById(`hit${i}`).setAttribute("fill", "#8ae234");
+    }
+
+    startButton.style.display = "flex";
+    startButton.style.animation = "blink 0.8s 10";
+    startButton.click();
 };
