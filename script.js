@@ -1,5 +1,4 @@
 // ** CONSTANS ** //
-const topOne = getBestScores(1)[0] ? getBestScores(1)[0].value : 0;
 const figures = document.getElementById("figures");
 const restart = document.getElementById("restart");
 const inputDiv = document.getElementById("input");
@@ -33,6 +32,7 @@ let time = 9;
 let count = 0;
 let gameActive = false;
 let isPressed = false;
+let topOne = getBestScores(1)[0] ? getBestScores(1)[0].value : 0;
 
 // ** FUNCTIONS ** //
 // start the action sound, clock and show the seconds in the timer
@@ -245,6 +245,9 @@ nameInput.onkeydown = (event) => {
 restart.onclick = () => {
     time = 9;
     count = 0;
+    // maybe last result was the best
+    topOne = getBestScores(1)[0] ? getBestScores(1)[0].value : 0;
+
     timerValue.textContent = "9sek";
     scoreValue.textContent = "0";
     restart.style.display = "none";
