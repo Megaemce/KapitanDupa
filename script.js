@@ -79,6 +79,12 @@ function startCountdown() {
         } else {
             clearInterval(countdownInterval);
             truTuTuSound.pause();
+            jakBabeSound.pause();
+            truTuTuSound.pause();
+            dlaczegoSound.pause();
+            noCoJestSound.pause();
+            zCalychSilSound.pause();
+            nicNieCzujeSound.pause();
             jakBabeSound.onended = undefined;
             truTuTuSound.onended = undefined;
             dlaczegoSound.onended = undefined;
